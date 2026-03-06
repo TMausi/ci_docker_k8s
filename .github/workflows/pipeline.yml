@@ -3,7 +3,7 @@ name: Flask DevOps CI/CD Pipeline
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
 
 env:
