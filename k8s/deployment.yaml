@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flask-demo
+  name: dep1
 spec:
   replicas: 2
   selector:
@@ -12,9 +12,11 @@ spec:
       labels:
         app: flask-demo
     spec:
+      imagePullSecrets:
+        - name: dh-secret
       containers:
-      - name: flask-demo
-        image: flask-demo:latest
+      - name: cont1
+        image: vickybulti/flask-demo:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5000
@@ -22,7 +24,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: flask-service
+  name: np1
 spec:
   type: NodePort
   selector:
